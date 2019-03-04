@@ -1,7 +1,7 @@
 <h1><u><%=@user.name%></u></h1>
 
 <h2>My Posts</h2>
-<%=link_to "New Post", create_post_path_url %>
+<%=link_to "New Post", new_post_url %>
 <ul>
   <% @user.entry.each do |p| %>
   <li><%=link_to p.title, post_path(p) %></li>

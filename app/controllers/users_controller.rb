@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_user, only: [:show, :create_post]
+  before_action :get_user, only: [:show, :create_post, :new_post]
 
 def index; end
 
@@ -19,7 +19,13 @@ def create
   end
 end
 
+  def new_post
+    byebug
+    @user.posts.new
+  end
+
 def create_post
+  byebug
  @user_post = @user.posts.new(post_params)
  if @user_post.valid?
    @user_post.save
