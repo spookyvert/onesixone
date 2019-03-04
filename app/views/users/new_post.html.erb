@@ -1,0 +1,27 @@
+<h1>New Post</h1>
+<br>
+<br>
+
+
+<ul>
+  <% if @user_post.errors.any? %>
+    <% @user_post.errors.full_messages.each do |msg| %>
+      <li><%= msg %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<%= form_for(@user) do |f| %>
+
+  <%= f.label :title, "Enter Title" %>
+  <%= f.text_field :title%><br>
+  <%= f.label :desc, "Enter Description" %>
+  <%= f.text_area :desc%><br>
+  <%= f.label :location, "Enter Location" %>
+  <%= f.text_field :location%><br>
+
+
+<%= f.submit %>
+<% end %>
