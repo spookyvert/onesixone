@@ -1,55 +1,55 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :create_post, :new_post]
 
-def index; end
+  def index; end
 
-def show;end
+  def show;end
 
-def new
-  @user = User.new
-end
-
-def create
-  @user = User.new(user_params)
-  if @user.valid?
-    @user.save
-    redirect_to user_path(@user)
-  else
-    render :new
+  def new
+    @user = User.new
   end
-end
+
+  def create
+    @user = User.new(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to user_path(@user)
+    else
+      render :new
+    end
+  end
 
   def new_post
-    byebug
-    @user.posts.new
+    @user_post = @user.posts.new
   end
 
-def create_post
-  byebug
- @user_post = @user.posts.new(post_params)
- if @user_post.valid?
-   @user_post.save
-   redirect_to post_path(@user_post)
- else
-   render :new_post
- end
+  # def create_post
+  #   @user_post = @user.posts.new(post_params)
+  #   if @user_post.valid?
+  #   
+  #     @user_post.save
+  #     redirect_to post_path(@user_post)
+  #   else
+  #     byebug
+  #     render :new_post
+  #   end
+  #
+  # end
 
-end
 
 
+  private
 
-private
+  def get_user
+    @user = User.find(params[:id])
+  end
 
-def get_user
-  @user = User.find(params[:id])
-end
-
-def user_params
-  params.require(:user).permit(:name)
-end
-def post_params
-  params.require(:post).permit(:title,:desc,:user_id,:location)
-end
+  def user_params
+    params.require(:user).permit(:name)
+  end
+  def post_params
+    params.require(:post).permit(:title,:desc,:user_id,:location)
+  end
 
 
 end

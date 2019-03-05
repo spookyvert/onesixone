@@ -2,7 +2,6 @@
 <br>
 <br>
 
-
 <ul>
   <% if @user_post.errors.any? %>
     <% @user_post.errors.full_messages.each do |msg| %>
@@ -12,16 +11,15 @@
   <% end %>
 </ul>
 
+<%= form_for @user_post , action: :create_post do |f| %>
 
-<%= form_for(@user) do |f| %>
-
-  <%= f.label :title, "Enter Title" %>
-  <%= f.text_field :title%><br>
-  <%= f.label :desc, "Enter Description" %>
-  <%= f.text_area :desc%><br>
-  <%= f.label :location, "Enter Location" %>
-  <%= f.text_field :location%><br>
-
+<%= f.label :title, "Enter Title" %>
+<%= f.text_field :title %><br>
+<%= f.label :desc, "Enter Description" %>
+<%= f.text_area :desc%><br>
+<%= f.label :location, "Enter Location" %>
+<%= f.text_field :location%><br>
+<input name="post[user_id]" value="<%= @user.id%>" type="hidden">
 
 <%= f.submit %>
 <% end %>
