@@ -18,7 +18,12 @@ class PostsController < ApplicationController
       render "users/new_post"
     end
   end
+  #
+  def destroy
 
+  end
+
+  #
   private
   def get_post
     @post = Post.find(params[:id])

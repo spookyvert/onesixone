@@ -14,10 +14,12 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       redirect_to user_path(@user)
-    else
+
+          else
       render :new
     end
   end
+
 
   def new_post
     @user_post = @user.posts.new
@@ -30,11 +32,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name,:email, :password, :password_confirmation)
   end
   def post_params
     params.require(:post).permit(:title, :desc, :user_id, :location)
   end
-
 
 end

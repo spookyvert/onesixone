@@ -1,11 +1,19 @@
-<h1><u><%=@user.name%></u></h1>
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <u><%=@user.name%></u>
+</h1>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
 
 <h2>My Posts</h2>
 <%=link_to "New Post", new_post_url %>
 <ul>
   <% @user.entry.each do |p| %>
-  <li><%=link_to p.title, post_path(p) %></li>
-   <% end%>
+    <li><%=link_to p.title, post_path(p) %></li>
+  <% end%>
 </ul>
 
 <hr>
@@ -14,6 +22,6 @@
 
 <ul>
   <% @user.posts.each do |p| %>
-  <li><%=link_to p.title, post_path(p) %></li>
-   <% end%>
+    <li><%=link_to p.title, post_path(p) %></li>
+  <% end%>
 </ul>

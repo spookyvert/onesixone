@@ -1,16 +1,3 @@
 <h1>New User</h1>
 
-<ul>
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<%= form_for(@user) do |f| %>
-<%= f.label :name, "Enter your Name" %>
-<%= f.text_field :name%><br>
-<%= f.submit %>
-<% end %>
+<%= render 'form', user: @user %>
