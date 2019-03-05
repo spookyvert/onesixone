@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
 
-  before_action :get_post, only: [:show]
+  before_action :get_post, only: [:show,:edit,:update,:destroy]
 
   def index
     @posts = Post.all
   end
 
-  def show;end
+  def show
+
+  end
 
   def create
     find_user
@@ -23,7 +25,31 @@ class PostsController < ApplicationController
 
   end
 
-  #
+  def edit
+    if  @logged_in && @user.id == @logged_in_user
+      render :edit
+    elsif @logged_in
+      redirect_to user_path(@logged_in_user)
+    else
+      redirect_to login_path
+    end
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to root_url
+  end
+
+
+
   private
   def get_post
     @post = Post.find(params[:id])

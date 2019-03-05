@@ -3,13 +3,16 @@
 <h1>
   <u><%=@user.name%></u>
 </h1>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<% if @logged_in_user.id == @user.id %>
+    <%= link_to "Edit this Profile", edit_user_url(@user)%>
+    <%= button_to "Delete this User Account", @user, method:"delete" %>
+    <%=link_to "New Post", new_post_url %>
+    <p><strong>Email:</strong><%= @user.email %></p>
+<% end %>
+
 
 <h2>My Posts</h2>
-<%=link_to "New Post", new_post_url %>
+
 <ul>
   <% @user.entry.each do |p| %>
     <li><%=link_to p.title, post_path(p) %></li>
