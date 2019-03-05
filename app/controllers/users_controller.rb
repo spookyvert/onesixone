@@ -23,21 +23,6 @@ class UsersController < ApplicationController
     @user_post = @user.posts.new
   end
 
-  # def create_post
-  #   @user_post = @user.posts.new(post_params)
-  #   if @user_post.valid?
-  #   
-  #     @user_post.save
-  #     redirect_to post_path(@user_post)
-  #   else
-  #     byebug
-  #     render :new_post
-  #   end
-  #
-  # end
-
-
-
   private
 
   def get_user
@@ -48,7 +33,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name)
   end
   def post_params
-    params.require(:post).permit(:title,:desc,:user_id,:location)
+    params.require(:post).permit(:title, :desc, :user_id, :location)
   end
 
 

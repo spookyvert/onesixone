@@ -9,30 +9,26 @@ class PostsController < ApplicationController
   def show;end
 
   def create
-    @u = post_params["user_id"].to_i
-    @user = User.find(@u)
-    @user.posts.new(post_params)
-
-    if @user.valid?
-      @user.save
-
-            redirect_to post_path(@user.posts.last.id)
+    find_user
+    @user_post = @user.posts.new(post_params)
+    if @user_post.valid?
+      @user_post.save
+      redirect_to post_path(@user_post.id)
     else
-      render :new_post
+      render "users/new_post"
     end
-
   end
-
-
 
   private
   def get_post
     @post = Post.find(params[:id])
   end
 
+  def find_user
+    @user = User.find(post_params["user_id"])
+  end
   def post_params
     params.require(:post).permit(:title,:desc,:user_id,:location)
   end
-
 
 end
