@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
   before_action :get_user, only: [:show, :create_post, :new_post,:edit,:update,:destroy]
   skip_before_action :setup_user, only:[:create]
-  def index; end
+
+  def index
+    if @logged_in
+      render :index
+    else
+      redirect_to login_path
+    end
+
+  end
 
   def show
-      @logged_in = !!session[:user_id]
+    @logged_in = !!session[:user_id]
 
   end
 
@@ -20,20 +28,22 @@ class UsersController < ApplicationController
 
       @logged_in_user =  User.find(session[:user_id])
       redirect_to user_path(@user)
-          else
+    else
       render :new
     end
   end
 
   def edit
-    if  @logged_in && @user.id == @logged_in_user
+    if  @logged_in && @user.id == @logged_in_user.id
       render :edit
     elsif @logged_in
-      redirect_to user_path(@logged_in_user)
+      render :index
     else
       redirect_to login_path
     end
   end
+
+
 
   def update
     if @user.update(user_params)

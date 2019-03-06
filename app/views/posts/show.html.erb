@@ -2,10 +2,10 @@
   <u><%=@post.title%></u>
 </h1>
 
-
 <h3><%=@post.desc%></h3>
-
+<%= image_tag @post.image %>
+<br>
 <% if @logged_in_user.id == @post.user_id %>
-    <%= link_to "Edit this Post", edit_post_url(@post)%>
-    <%= button_to "Delete this Post", @post, method:"delete" %>
+  <%= link_to "Edit this Post", edit_post_url(@post)%>
+  <%= button_to "Delete this Post", @post, method:"delete" %>
 <% end %>

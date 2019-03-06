@@ -4,4 +4,7 @@ class Post < ApplicationRecord
   validates :desc, presence: true
   validates :location, presence: true
   validates :user_id, presence: true
+
+
+  has_one_attached :image
 end

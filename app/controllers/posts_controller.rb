@@ -13,6 +13,8 @@ class PostsController < ApplicationController
   def create
     find_user
     @user_post = @user.posts.new(post_params)
+    @user_post.image.attach(params[:post][:image])
+
     if @user_post.valid?
       @user_post.save
       redirect_to post_path(@user_post.id)
@@ -26,10 +28,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    if  @logged_in && @user.id == @logged_in_user
+    find_post_user
+    if  @logged_in && @user.id == @logged_in_user.id
       render :edit
     elsif @logged_in
-      redirect_to user_path(@logged_in_user)
+      render :index
     else
       redirect_to login_path
     end
@@ -55,11 +58,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def find_post_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+  end
+
   def find_user
     @user = User.find(post_params["user_id"])
   end
   def post_params
-    params.require(:post).permit(:title,:desc,:user_id,:location)
+    params.require(:post).permit(:title,:desc,:user_id,:location, :image)
   end
 
 end
