@@ -17,8 +17,10 @@
 <%= f.text_field :title %><br>
 <%= f.label :desc, "Enter Description" %>
 <%= f.text_area :desc%><br>
-<%= f.label :location, "Enter Location" %>
-<%= f.text_field :location%><br>
+<%= f.label :latitude, "Enter Lat" %>
+<%= f.text_field :latitude%><br>
+<%= f.label :longitude, "Enter Long" %>
+<%= f.text_field :longitude%><br>
 <input name="post[user_id]" value="<%= @user.id%>" type="hidden">
 
 <%= f.submit %>

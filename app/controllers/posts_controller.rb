@@ -67,7 +67,7 @@ class PostsController < ApplicationController
     @user = User.find(post_params["user_id"])
   end
   def post_params
-    params.require(:post).permit(:title,:desc,:user_id,:location, :image)
+    params.require(:post).permit(:title,:desc,:user_id, :longitude, :latitude , :image)
   end
 
 end

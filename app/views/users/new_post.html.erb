@@ -19,8 +19,10 @@
 <%= f.file_field :image %>
 <%= f.label :desc, "Enter Description" %>
 <%= f.text_area :desc%><br>
-<%= f.label :location, "Enter Location" %>
-<%= f.text_field :location%><br>
+<%= f.label :longitude, "Enter Location" %>
+<%= f.text_field :longitude%><br>
+<%= f.label :latitude, "Enter Location" %>
+<%= f.text_field :latitude%><br>
 <input name="post[user_id]" value="<%= @user.id%>" type="hidden">
 
 <%= f.submit %>
