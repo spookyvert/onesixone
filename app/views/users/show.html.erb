@@ -3,13 +3,17 @@
 <h1>
   <u><%=@user.name%></u>
 </h1>
-<% if @logged_in_user.id == @user.id %>
-    <%= link_to "Edit this Profile", edit_user_url(@user)%>
-    <%= button_to "Delete this User Account", @user, method:"delete" %>
-    <%=link_to "New Post", new_post_url %>
-    <p><strong>Email:</strong><%= @user.email %></p>
-<% end %>
+<h2>
+  <%= @user.teams[0].name %>
 
+</h2>
+<% if @logged_in_user.id == @user.id %>
+  <%= link_to "Edit this Profile", edit_user_url(@user)%>
+  <%= button_to "Delete this User Account", @user, method:"delete" %>
+  <%=link_to "New Post", new_post_url %>
+  <p>
+    <strong>Email:</strong><%= @user.email %></p>
+<% end %>
 
 <h2>My Posts</h2>
 

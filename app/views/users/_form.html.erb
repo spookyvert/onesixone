@@ -17,6 +17,10 @@
 </div>
 
 <div class="field">
+  <%= form.collection_select :team , Team.all, :id, :name %>
+</div>
+
+<div class="field">
   <%= form.label :email %>
   <%= form.text_field :email %>
 </div>

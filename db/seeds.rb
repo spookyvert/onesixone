@@ -6,12 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 
 PostUser.destroy_all
+Sponsorship.destroy_all
 User.destroy_all
 Post.destroy_all
 
-@user = User.create(name: "Elliot")
-@u2 = User.create(name: "Shemar")
 
-@p = Post.create(title: "WeWork Parking Lot", desc: "gnarly", user_id: @user.id,  location: "Brooklyn")
+User.create(name: "Elliot", email: "Elliot@gmail.com", password_digest: "1")
+User.create(name: "Shemar", email: "Shemar@gmail.com", password_digest: "2")
 
-PostUser.create(user_id: @u2.id , post_id: @p.id)
+Team.create(name: "Supreme")
+Team.create(name: "ReVive")
+Team.create(name: "HUF")
+Team.create(name: "ZooYork")
+Team.create(name: "DC")

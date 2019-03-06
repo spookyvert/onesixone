@@ -22,9 +22,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
+      @team = params["user"]["team"]
+      Sponsorship.create(user_id: @user.id,  team_id: @team)
 
       @logged_in_user =  User.find(session[:user_id])
       redirect_to user_path(@user)
@@ -74,7 +78,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name,:email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   def post_params
     params.require(:post).permit(:title, :desc, :user_id, :location)
