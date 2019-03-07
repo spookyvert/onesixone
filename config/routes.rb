@@ -3,8 +3,17 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   resources :users, only: [:show,:new, :index,:create,:update,:edit,:destroy]
+  resources :post_users, only: [:create, :destroy]
   resources :posts, only: [:index, :show, :create, :update,:edit,:destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :teams, only: [:index]
+
+
+  resources :users do
+      resources :posts do
+        resources :post_users, only: [:create, :destroy]
+      end
+    end
 
   get "/users/:id/new-post/", to: "users#new_post" , :as => :new_post
   get 'signup', to: 'users#new', as: 'signup/'

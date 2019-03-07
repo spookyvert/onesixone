@@ -14,54 +14,70 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
 
 
     <% if current_user %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar w/ text</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">onesixone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <%= link_to "Log Out", logout_path ,:class => "nav-link" %></a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "Log Out", logout_path ,:class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Posts</a>
+          <%= link_to "Posts", posts_path , :class => "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Teams</a>
+          <%= link_to "Teams", teams_path , :class => "nav-link" %>
         </li>
       </ul>
-      <span class="navbar-text">
-        Hello! <%= current_user.name %>
+      <span class="navbar-text" id="white">
+        Hello! <u><i><%= link_to current_user.name, user_path(current_user)%></i></u>
       </span>
     </div>
-  </nav>
+  </div>
+</nav>
     <% else %>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar w/ text</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><%= link_to "Sign Up", signup_path %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><%= link_to "Log In", login_path %></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Teams</a>
-      </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">onesixone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log In", login_path , :class => "nav-link"%>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
     <% end %>
+
+
     <%= yield  %>
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">made with 💜 Shemar <span id="blue">//</span> Elliot</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
   </body>
 </html>

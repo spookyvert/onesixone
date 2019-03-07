@@ -1,0 +1,27 @@
+
+<div id="fullBg" />
+
+   <div class="container" style="padding-top: 50px;">
+
+      <br><br><br>
+
+
+
+      <div class="post_section">
+
+        <h4> TEAMS </h4>
+        <br>
+        <ul style="padding: inherit; list-style-type: none;"">
+        <% @teams.each do |t|%>
+            <li><h3 style="color: #fff">🏷️ <%= t.name %></h3> <span>(<%= t.users.count %> members)<span></li>
+              <hr>
+
+          <% end%>
+          </ul>
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+   </div>

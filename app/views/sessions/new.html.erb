@@ -1,17 +1,21 @@
-
 <p id="”alert”"><%= alert %></p>
+<div id="fullBg" />
 
-<h1>Login</h1>
-<%= form_tag sessions_path do |form| %>
-<div class="”field”">
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-</div>
-<div class="”field”">
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-</div>
-<div class="”actions”">
-  <%= submit_tag "Login"%>
-</div>
-<% end %>
+   <div class="container">
+      <%= form_tag sessions_path do |form| %>
+      <br><br><br>
+      <figure>
+         <h4 class= "glow" id="pad_a" >please login</h4>
+      </figure>
+      <div class="login_section">
+
+         <%= text_field_tag :email, "",placeholder: "Email Address" %>
+         <br>
+         <%= password_field_tag :password,"", placeholder: "Password" %>
+         <br>
+         <br>
+         <%= submit_tag "login" , :class=>"btn btn-danger" %>
+
+      <% end %>
+        </div>
+   </div>

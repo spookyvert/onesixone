@@ -1,34 +1,65 @@
 <p id="notice"><%= notice %></p>
+<div id="fullBgProfile" />
+<header class="header" >
+    <div class="container">
+      <div class="teacher-name">
+        <div class="row">
+        <div class="col-sm-9">
+          <h2><strong><%=@user.name%></strong></h2>
+        </div>
+        <div class="col-sm-3">
+          <% if @logged_in_user.id == @user.id %>
 
-<h1>
-  <u><%=@user.name%></u>
-</h1>
-<h2>
-  <%= @user.teams[0].name %>
 
-</h2>
-<% if @logged_in_user.id == @user.id %>
-  <%= link_to "Edit this Profile", edit_user_url(@user)%>
-  <%= button_to "Delete this User Account", @user, method:"delete" %>
-  <%=link_to "New Post", new_post_url %>
-  <p>
-    <strong>Email:</strong><%= @user.email %></p>
-<% end %>
 
-<h2>My Posts</h2>
 
-<ul>
-  <% @user.entry.each do |p| %>
-    <li><%=link_to p.title, post_path(p) %></li>
-  <% end%>
-</ul>
+            <%= button_to "Delete this User Account", @user, method:"delete" %>
 
-<hr>
+            <%= link_to "Edit this Profile", edit_user_url(@user) %>
+            <br>
+            <%=link_to "New Post", new_post_url %>
 
-<h2>Favoritez</h2>
+            <p>
+              <strong>Your Email: </strong><%= @user.email %></p>
+          <% end %>
 
-<ul>
-  <% @user.posts.each do |p| %>
-    <li><%=link_to p.title, post_path(p) %></li>
-  <% end%>
-</ul>
+        </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:20px;">
+        <div class="col-sm-6">
+          <h5>TEAM: <small><%= @user.teams[0].name %></small></h5>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+  <div class="row">
+        <div class="col-sm-12">
+
+          <div class="card card-block " style="margin: 10px ">
+            <h5 style="padding:20px">My Posts</h5>
+            <ul>
+              <% @user.entry.each do |p| %>
+                <li><%=link_to p.title, post_path(p) %></li>
+              <% end%>
+            </ul>
+          </div>
+
+          <div class="card card-block " style="margin: 10px ">
+            <h5 style="padding:20px">Favorites</h5>
+            <ul>
+              <% @user.posts.each do |p| %>
+                <li><%=link_to p.title, post_path(p) %></li>
+              <% end%>
+            </ul>
+          </div>
+
+
+      </div>
+
+</div>

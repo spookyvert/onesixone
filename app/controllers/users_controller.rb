@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       Sponsorship.create(user_id: @user.id,  team_id: @team)
 
       @logged_in_user =  User.find(session[:user_id])
-      redirect_to user_path(@user)
+      redirect_to posts_path
     else
       render :new
     end

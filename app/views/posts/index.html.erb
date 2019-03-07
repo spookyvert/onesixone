@@ -1,27 +1,54 @@
-<h1>New Post</h1>
-<br>
-<br>
+<div id="fullBgindex" />
+<!-- Page Content -->
 
-<ul>
-  <% if @user_post.errors.any? %>
-    <% @user_post.errors.full_messages.each do |msg| %>
-      <li><%= msg %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
 
-<%= form_for(@user_post) do |f| %>
+  <div class="container" style=" margin: 5em;">
+    <br>
+    <br>
+    <br>
+    <img src="https://i.imgur.com/xxisARe.png"/>
+    <br>
+    <div class="row">
 
-<%= f.label :title, "Enter Title" %>
-<%= f.text_field :title %><br>
-<%= f.label :desc, "Enter Description" %>
-<%= f.text_area :desc%><br>
-<%= f.label :latitude, "Enter Lat" %>
-<%= f.text_field :latitude%><br>
-<%= f.label :longitude, "Enter Long" %>
-<%= f.text_field :longitude%><br>
-<input name="post[user_id]" value="<%= @user.id%>" type="hidden">
+      <% @posts.each do |p|%>
 
-<%= f.submit %>
-<% end %>
+        <!-- Blog Entries Column -->
+        <div class="col-md-4">
+          <!-- Blog Post -->
+          <div class="card mb-2" style= "background-color: #212121 ">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title"><%= p.title %></h2>
+              <p class="card-text"><%= p.desc %></p>
+              <span id= "white"><%=  p.users.count %> </span>
+              <%= link_to "Show Post", post_path(p), :class => "linkhover" %>
+
+              <%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
+              <input id="post_user_post_id" name="post_user[post_id]" value="<%= p.id %>" type="hidden">
+
+              <%= submit_tag "Like"  %>
+              <% end %>
+
+              </div>
+            <div class="card-footer text-muted">
+              Posted on <%= p.created_at.to_formatted_s(:long_ordinal) %> by
+              <%= link_to p.user.name, user_path(p.user) , :class => "linkhover"%>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <% end%>
+
+
+
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->

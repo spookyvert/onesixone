@@ -1,28 +1,13 @@
 <div class="show_content">
-    <script>
-    document.addEventListener("DOMContentLoaded", function(){
-        initMap(<%=@post.longitude%>, <%=@post.latitude%>)
-    });
-    </script>
 
 
 
 <div class="row">
+<%= @post.title %>
+<%= @post.desc %>
+<p> Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
 
-
-
-     <div class="card mb-4">
-       <img class="card-img-top" src="http://placehold.it/750x300">
-       <div class="card-body">
-         <h2 class="card-title"> <%= @post.title %> </h2>
-         <p class="card-text"> <%= @post.desc %> </p>
-       </div>
-       <div class="card-footer text-muted">
-         Posted by <%= link_to @post.user.name , user_path(@post.user) %>
-       </div>
-     </div>
-
-
+</div>
 <div class="user_button">
 <% if @logged_in_user.id == @post.user_id %>
 <br>
@@ -30,5 +15,10 @@
   <%= button_to "Delete this Post", @post, method:"delete" %>
   <br>
 <% end %>
+
 </div>
+<p>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C40.694,-73.9901&key=AIzaSyBScc4pzumdjCf22-UZuIMBPMm77MGvolI", alt: "Map" %>
+</p>
+
 </div>
