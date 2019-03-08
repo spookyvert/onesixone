@@ -28,10 +28,11 @@
          <%= f.file_field :image , :class => "form-control-file"%>
          <%= f.label :desc, "Enter Description" %>
          <%= f.text_area :desc , :class => "form-control"%><br>
-         <%= f.label :longitude, "Enter Location" %>
-         <%= f.text_field :longitude , :class => "form-control"%><br>
-         <%= f.label :latitude, "Enter Location" %>
+         <%= f.label :latitude, "Enter LAT" %>
          <%= f.text_field :latitude , :class => "form-control"%><br>
+         <%= f.label :longitude, "Enter LONG" %>
+         <%= f.text_field :longitude , :class => "form-control"%><br>
+
          <input name="post[user_id]" value="<%= @user.id%>" type="hidden">
          <br>
          <%= f.submit class: "btn btn-danger"%>

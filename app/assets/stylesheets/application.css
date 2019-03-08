@@ -57,7 +57,7 @@ body{
 
 
  #fullBg {
-   z-index: -1;
+
    height: 100%;
    width: 100%;
    position: absolute;
@@ -70,7 +70,7 @@ body{
 
   #fullBgProfile {
         padding-top: 56px;
-    z-index: -1;
+
     height: 100%;
     width: 100%;
     position: absolute;
@@ -81,7 +81,7 @@ body{
     left: 0;
   }
  #fullBgindex {
-   z-index: -1;
+
    height: 100%;
    width: 100%;
    position: absolute;
@@ -310,10 +310,9 @@ h5, .fa-circle{
   border-bottom: 2px solid yellow;
 
 }
-.navbar-brand img{
-  width: 20%;
+#nav-img{
+  width: 10%;
 }
-
 #homepage_description h5{
   text-align: center;
   color: rgb(255,255,255);

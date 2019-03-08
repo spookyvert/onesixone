@@ -18,7 +18,26 @@
 
 </div>
 <p>
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C40.694,-73.9901&key=AIzaSyBScc4pzumdjCf22-UZuIMBPMm77MGvolI", alt: "Map" %>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{@post.latitude},#{@post.longitude}&key=AIzaSyBScc4pzumdjCf22-UZuIMBPMm77MGvolI", alt: "Map" %>
 </p>
 
 </div>
+
+
+<div class="container">
+
+  <!-- Heading Row -->
+  <div class="row align-items-center my-5">
+    <div class="col-lg-7">
+      <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-5">
+      <h1 class="font-weight-light"><%= @post.title %></h1>
+      <p><%= @post.desc %></p>
+      <p> Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
+    </div>
+    <!-- /.col-md-4 -->
+  </div>
+</div>
+  <!-- /.row -->

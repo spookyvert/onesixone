@@ -2,13 +2,13 @@
 <div id="fullBg" />
 
    <div class="container">
-      <%= form_tag sessions_path do |form| %>
+
       <br><br><br>
       <figure>
          <h4 class= "glow" id="pad_a" >please login</h4>
       </figure>
       <div class="login_section">
-
+        <%= form_tag sessions_path do |form| %>
          <%= text_field_tag :email, "",placeholder: "Email Address" %>
          <br>
          <%= password_field_tag :password,"", placeholder: "Password" %>
