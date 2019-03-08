@@ -391,6 +391,11 @@ btn-primary, a:hover {
 .card-title, .card-text{
   color: white;
 }
+
+#white a:hover{
+  background-color: transparent;
+  color:grey;
+}
 .inline{
   display: inline-block;
 }
