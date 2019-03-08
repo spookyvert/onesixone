@@ -2,7 +2,6 @@
 <div id="fullBg" />
 
    <div class="container" style="padding-top: 50px;">
-
       <%= form_for(@user_post) do |f| %>
       <br><br><br>
 
@@ -11,7 +10,8 @@
       <div class="post_section">
 
 
-        <h4  >New Post</h4>
+        <h4>  New Post</h4>
+        <br>
         <br>
         <br>
         <ul>
@@ -36,7 +36,7 @@
         <div class="form_lines">
           <div id="desc" class="inline"">
             <%= f.label :desc, "Enter Description" %>
-            <%= f.text_area :desc , :class => "form-control"%><br>
+            <%= f.text_field :desc , :class => "form-control"%><br>
           </div>
           <div id="Long"class="inline">
             <%= f.label :longitude, "Enter Longitude" %>
@@ -44,7 +44,7 @@
            </div>
         </div>
          <div id="image">
-           <%= f.label :image, "Enter Image" %>
+           <%= f.label :image, "Select an Image" %>
            <%= f.file_field :image , :class => "form-control-file"%>
          </div>
          <div id="submit" >
