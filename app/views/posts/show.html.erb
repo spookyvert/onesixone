@@ -1,40 +1,38 @@
-<div style="color:white;text-align:center"></div>
-<div class="container">
-  <!-- Heading Row -->
-  <div class="row align-items-center my-5" style="background-color: #171717d6;">
-    <div class="col-lg-7">
-      <%= image_tag @post.image , class: "img-fluid rounded mb-4 mb-lg-0" %>
-    </div>
-    <!-- /.col-lg-8 -->
-    <div class="col-lg-5">
-      <h2 class="font-weight-light"><%= @post.title %></h2>
-      <p><%= @post.desc %></p>
-      <p>
-        <span id="white">❤️
-          <%= @post.users.count %></span>
-        | Posted by
-        <%= link_to @post.user.name , user_path(@post.user) , :id => "white" %></p>
-      <%if @logged_in_user.id == @post.user_id %>
-        <div class="user_button" style="">
-          <ul>
-            <li><%= link_to "Edit this Post", edit_post_url(@post) , :class => "btn btn-warning btn-sm"%></li>
-            <li><%= button_to "Delete this Post", @post, method:"delete" , :class => "btn btn-danger btn-sm" %></li>
-            <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-warning btn-sm"%></li><%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
-            <li style="list-style: none"><input id="post_user_post_id" name="post_user[post_id]" type="hidden" value="<%= @post.id %>"></li>
-            <li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li>
-          <%end %>
-        </ul>
-      </div>
-    <%else %>
-      <div class="user_button">
-        <ul>
-          <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-primary btn-sm"%></li><%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
-          <li style="list-style: none"><input id="post_user_post_id" name="post_user[post_id]" type="hidden" value="<%= @post.id %>"></li>
-          <li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li>
-        <%end %>
-      </ul>
-    </div>
-  <%end %>
+<div style= "color:white;text-align:center">
+  <h1><u><%= @post.title %></u></h1>
 </div>
-</div>
-</div>
+	<div class="container">
+		<!-- Heading Row -->
+		<div class="row align-items-center my-5" style="background-color: #171717d6;">
+			<div class="col-lg-7">
+				<%= image_tag @post.image , class: "img-fluid rounded mb-4 mb-lg-0" %>
+			</div><!-- /.col-lg-8 -->
+			<div class="col-lg-5">
+				<h2 class="font-weight-light">Description:</h2>
+        <br>
+        <br>
+        <br>
+				<p><%= @post.desc %></p>
+        <br>
+        <br>
+        <br>
+				<p><span id="white">❤️ <%=  @post.users.count %></span> | Posted by <%= link_to @post.user.name , user_path(@post.user) %></p><%if @logged_in_user.id == @post.user_id %>
+				<div class="user_button"style="">
+					<ul>
+						<li><%= link_to "Edit this Post", edit_post_url(@post) , :class => "btn btn-warning btn-sm"%></li>
+						<li><%= button_to "Delete this Post", @post, method:"delete" , :class => "btn btn-danger btn-sm" %></li>
+						<li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-warning btn-sm"%></li><%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
+						<li style="list-style: none"><input id="post_user_post_id" name="post_user[post_id]" type="hidden" value="<%= @post.id %>"></li>
+						<li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li><%end %>
+					</ul>
+				</div><%else %>
+				<div class="user_button">
+					<ul>
+						<li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-primary btn-sm"%></li><%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
+						<li style="list-style: none"><input id="post_user_post_id" name="post_user[post_id]" type="hidden" value="<%= @post.id %>"></li>
+						<li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li><%end %>
+					</ul>
+				</div><%end %>
+			</div>
+		</div>
+	</div>
