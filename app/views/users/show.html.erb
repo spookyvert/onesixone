@@ -53,9 +53,9 @@
           <div class="card card-block " style="margin: 10px ">
             <h5 style="padding:20px">Favorites</h5>
             <ul>
-              <% @user.posts.each do |p| %>
+              <% @user.posts.each { |p| %>
                 <li><%=link_to p.title, post_path(p) %></li>
-              <% end%>
+              <% }.uniq  %>
             </ul>
           </div>
 

@@ -11,9 +11,9 @@ class PostUsersController < ApplicationController
     if @like.save
       @posts = Post.all
       flash[:success] = "Liked Post"
-      render :"posts/index"
+      redirect_back(fallback_location: :show)
     else
-     flash[:error] = "Welcome to the Sample App!"
+     flash[:error] = "Error while liking post"
     end
   end
 

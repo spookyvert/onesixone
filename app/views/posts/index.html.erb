@@ -16,21 +16,24 @@
         <div class="col-md-4">
           <!-- Blog Post -->
           <div class="card mb-2" style= "background-color: #212121 ">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <%= image_tag p.image , class: "card-img-top" %>
             <div class="card-body">
               <h2 class="card-title"><%= p.title %></h2>
               <p class="card-text"><%= p.desc %></p>
-              <span id= "white"><%=  p.users.count %> </span>
-              <%= link_to "Show Post", post_path(p), :class => "linkhover" %>
+
+              <%= link_to "Show Post", post_path(p), :class => "btn btn-warning btn-sm" %>
 
               <%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
               <input id="post_user_post_id" name="post_user[post_id]" value="<%= p.id %>" type="hidden">
 
-              <%= submit_tag "Like"  %>
+              <%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%>
               <% end %>
 
               </div>
             <div class="card-footer text-muted">
+
+              <span id= "white">❤️ <%=  p.users.count %> </span>
+              |
               Posted on <%= p.created_at.to_formatted_s(:long_ordinal) %> by
               <%= link_to p.user.name, user_path(p.user) , :class => "linkhover"%>
             </div>

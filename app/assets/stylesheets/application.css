@@ -386,7 +386,10 @@ btn-primary, a:hover {
 }
 .post_form{
   display: block;
+}
 
+.card-title, .card-text{
+  color: white;
 }
 .inline{
   display: inline-block;

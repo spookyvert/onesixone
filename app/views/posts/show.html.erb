@@ -11,7 +11,7 @@
     <div class="col-lg-5">
       <h1 class="font-weight-light"><%= @post.title %></h1>
       <p><%= @post.desc %></p>
-      <p> Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
+      <p> <span id= "white">❤️ <%=  @post.users.count %> </span> | Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
 
       <% if @logged_in_user.id == @post.user_id %>
       <div class="user_button">
@@ -21,6 +21,12 @@
         <li><%= link_to "Edit this Post", edit_post_url(@post) , :class => "btn btn-warning btn-sm"%> </li>
         <li><%= button_to "Delete this Post", @post, method:"delete" , :class => "btn btn-danger btn-sm" %></li>
         <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-warning btn-sm"%> </li>
+
+        <%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
+        <input id="post_user_post_id" name="post_user[post_id]" value="<%= @post.id %>" type="hidden">
+
+          <li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li>
+        <% end %>
         </ul>
         </div>
 
@@ -30,6 +36,12 @@
 
 
         <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-primary btn-sm"%> </li>
+        <%= form_tag({controller: "post_users", action: "create"}, method: "post") do %>
+        <input id="post_user_post_id" name="post_user[post_id]" value="<%= @post.id %>" type="hidden">
+
+          <li><%= submit_tag "Like" , :class=>"btn btn-danger btn-sm"%></li>
+        <% end %>
+
         </ul>
         </div>
 
