@@ -10,14 +10,14 @@
         <div class="col-sm-3">
           <% if @logged_in_user.id == @user.id %>
 
-
-
-
-            <%= button_to "Delete this User Account", @user, method:"delete" %>
-
-            <%= link_to "Edit this Profile", edit_user_url(@user) %>
+            <%=link_to "New Post", new_post_url , :class => "btn btn-primary btn-sm"  %>
             <br>
-            <%=link_to "New Post", new_post_url %>
+          <%= link_to "Edit this Profile", edit_user_url(@user) , :class => "btn btn-warning btn-sm" %>
+          <br>
+
+            <%= button_to "Delete this User Account", @user, method:"delete", :class => "btn btn-danger btn-sm"  %>
+
+
 
             <p>
               <strong>Your Email: </strong><%= @user.email %></p>

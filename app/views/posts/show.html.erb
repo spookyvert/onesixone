@@ -1,43 +1,42 @@
-<div class="show_content">
-
-
-
-<div class="row">
-<%= @post.title %>
-<%= @post.desc %>
-<p> Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
-
-</div>
-<div class="user_button">
-<% if @logged_in_user.id == @post.user_id %>
-<br>
-  <%= link_to "Edit this Post", edit_post_url(@post)%>
-  <%= button_to "Delete this Post", @post, method:"delete" %>
-  <br>
-<% end %>
-
-</div>
-<p>
-<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&markers=size:small%7Ccolor:red%7C#{@post.latitude},#{@post.longitude}&key=AIzaSyBScc4pzumdjCf22-UZuIMBPMm77MGvolI", alt: "Map" %>
-</p>
-
-</div>
 
 
 <div class="container">
 
   <!-- Heading Row -->
-  <div class="row align-items-center my-5">
+  <div class="row align-items-center my-5" style="background-color: #171717d6;">
     <div class="col-lg-7">
-      <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+      <%= image_tag @post.image , class: "img-fluid rounded mb-4 mb-lg-0" %>
     </div>
     <!-- /.col-lg-8 -->
     <div class="col-lg-5">
       <h1 class="font-weight-light"><%= @post.title %></h1>
       <p><%= @post.desc %></p>
       <p> Posted by <%= link_to @post.user.name , user_path(@post.user) %> </p>
-    </div>
-    <!-- /.col-md-4 -->
+
+      <% if @logged_in_user.id == @post.user_id %>
+      <div class="user_button">
+      <ul>
+
+
+        <li><%= link_to "Edit this Post", edit_post_url(@post) , :class => "btn btn-warning btn-sm"%> </li>
+        <li><%= button_to "Delete this Post", @post, method:"delete" , :class => "btn btn-danger btn-sm" %></li>
+        <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-warning btn-sm"%> </li>
+        </ul>
+        </div>
+
+      <% else %>
+      <div class="user_button">
+      <ul>
+
+
+        <li><%= link_to "Directions", "https://www.google.com/maps/dir/40.7009948,-73.9874544/#{@post.latitude},#{@post.longitude}" , :class => "btn btn-primary btn-sm"%> </li>
+        </ul>
+        </div>
+
+      <% end %>
+
+
+
   </div>
+
 </div>
-  <!-- /.row -->
