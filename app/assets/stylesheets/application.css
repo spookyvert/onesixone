@@ -13,7 +13,14 @@
  *= require_tree .
  *= require_self
  */
-
+ html,body{
+       height: 100%;
+ }
+body{
+  background-image: url('https://i.pinimg.com/originals/b3/6a/f3/b36af34439f68493468ef9a498be3a0d.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 #blue{
 
   color: blue;
@@ -36,11 +43,12 @@
      background-color: #131313!important;
  }
  footer {
-  bottom: -50px;
+  bottom: -70px;
   height: 50px;
   left: 0;
   position: absolute;
   right: 0;
+  border-top: 2px solid yellow;
 }
 
  body {
@@ -257,6 +265,7 @@ hr {
 .header {
   padding: 10px 0;
   background: #f5f5f5;
+
 }
 .button-email{
   margin:10px 0
@@ -296,4 +305,34 @@ h5, .fa-circle{
 
 .label a{
   color: inherit;
+}
+.navbar{
+  border-bottom: 2px solid yellow;
+
+}
+.navbar-brand img{
+  width: 20%;
+}
+
+#homepage_description h5{
+  text-align: center;
+  color: rgb(255,255,255);
+  font-size: 25px;
+  text-shadow: 0px 0px 20px black;
+
+}
+#homepage_logo{
+  text-align: center;
+  padding-top: 300px;
+  padding-bottom: 50px
+}
+#homepage_logo img{
+  width: 15%;
+  background-color: black;
+  border: 1px solid yellow;
+  box-shadow: 1px 1px 20px 12px black;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255,255,255);
+    font-size: large;
 }
