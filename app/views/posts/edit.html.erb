@@ -9,18 +9,45 @@
     <% end %>
   <% end %>
 </ul>
+<div class="post_section">
+  <h4>  Edit This Post</h4>
+  <br>
+  <br>
+  <br>
+  <br>
 
-<%= form_for(@post) do |f| %>
-
-<%= f.label :title, "Enter Title" %>
-<%= f.text_field :title %><br>
-<%= f.label :desc, "Enter Description" %>
-<%= f.text_area :desc%><br>
-<%= f.label :latitude, "Enter Lat" %>
-<%= f.text_field :latitude%><br>
-<%= f.label :longitude, "Enter Long" %>
-<%= f.text_field :longitude%><br>
-<input name="post[user_id]" value="<%= @post.id%>" type="hidden">
-
-<%= f.submit %>
+  <%= form_for(@post) do |f| %>
+  <div class="form_lines">
+    <div id="post_form">
+      <div id="title" class="inline">
+        <%= f.label :title, "Post Title:" %>
+        <%= f.text_field :title , :class => "form-control"%><br>
+      </div>
+      <div id="Lat"class="inline">
+        <%= f.label :latitude, "Enter Latitude:" %>
+        <%= f.text_field :latitude , :class => "form-control"%><br>
+      </div>
+  </div>
+  <div class="form_lines">
+    <div id="desc" class="inline"">
+      <%= f.label :desc, "Enter Description:" %>
+      <%= f.text_field :desc , :class => "form-control"%><br>
+    </div>
+    <div id="Long"class="inline">
+      <%= f.label :longitude, "Enter Longitude:" %>
+      <%= f.text_field :longitude , :class => "form-control"%><br>
+     </div>
+  </div>
+   <div id="image">
+     <%= f.label :image, "Select an Image:" %>
+     <%= f.file_field :image , :class => "form-control-file"%>
+   </div>
+   <div id="submit" >
+     <input name="post[user_id]" value="<%= @post.id%>" type="hidden">
+     <br>
+     <br>
+     <br>
+     <%= f.submit class: "btn btn-danger"%>
+   </div>
+</div>
 <% end %>
